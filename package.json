@@ -1,0 +1,23 @@
+{
+  "name": "new-express-app",
+  "version": "1.0.0",
+  "description": "CLI to create a new express application",
+  "main": "index.js",
+  "bin": {
+    "new-express-app": "bin/new-express-app.js"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "degit": "^2.8.4",
+    "inquirer": "^12.4.3",
+    "simple-git": "^3.27.0"
+  }
+}
