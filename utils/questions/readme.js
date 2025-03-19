@@ -1,8 +1,8 @@
 import inquirer from "inquirer";
 
 /**
- *
- * @returns {Promise<Record<string, any>>} Answers from the user.
+ * Ask if the user wants to include a README file
+ * @returns {Promise<Record<string, any>>} - The README file
  */
 export const askReadme = async () => {
   return await inquirer.prompt([

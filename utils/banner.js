@@ -1,5 +1,4 @@
 export const banner = `
-
     ______                                  ___              
    / ____/  ______  ________  __________   /   |  ____  ____ 
   / __/ | |/_/ __ \\/ ___/ _ \\/ ___/ ___/  / /| | / __ \\/ __ \\
@@ -7,10 +6,10 @@ export const banner = `
 /_____/_/|_/ .___/_/   \\___/____/____/  /_/  |_/ .___/ .___/ 
           /_/                                 /_/   /_/      
      
-         By Flyckt Coding 2025 - Create Express App
+                   By Ludvig Flyckt 2025
          To see more information about the CLI type: 
          new-express-app --help
          
          To contribute to the project, visit:
-          
+         https://github.com/Ludvigpbf/cli-new-express-app.git
 `;
