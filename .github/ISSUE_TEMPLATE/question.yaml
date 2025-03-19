@@ -1,0 +1,16 @@
+name: "❓ General Question"
+description: "Ask a question or request help."
+title: "[Question]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for reaching out! Please describe your question."
+
+  - type: textarea
+    id: question
+    attributes:
+      label: "Your Question"
+      description: "Provide details about what you need help with."
+    validations:
+      required: true

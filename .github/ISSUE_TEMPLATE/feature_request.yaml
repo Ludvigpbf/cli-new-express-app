@@ -1,0 +1,25 @@
+name: "🚀 Feature Request"
+description: "Suggest a new feature for the project."
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: "We appreciate your feature request! Please provide details below."
+
+  - type: input
+    id: feature_title
+    attributes:
+      label: "Feature Title"
+      description: "Give your feature a short, descriptive title."
+      placeholder: "e.g., Add support for XYZ"
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature_description
+    attributes:
+      label: "Feature Description"
+      description: "Describe the feature and its benefits."
+    validations:
+      required: true
