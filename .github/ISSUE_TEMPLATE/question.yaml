@@ -19,6 +19,18 @@ body:
       default: 4
     validations:
       required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: "Status"
+      description: "Select the current status of this issue"
+      options:
+        - "Pending - Question status"
+        - "Reviewed - Question status"
+        - "Answered - Question status"
+      default: 0
+    validations:
+      required: true
   - type: textarea
     id: question
     attributes:
