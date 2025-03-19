@@ -46,13 +46,15 @@ body:
       description: "Provide any relevant information, links, or examples."
       placeholder: "Any additional context..."
   - type: dropdown
-    id: urgency
+    id: priority
     attributes:
-      label: "Urgency Level"
+      label: "Priority"
       description: "How urgent is this question?"
       options:
-        - "Low - Just curious"
-        - "Medium - Need an answer soon"
-        - "High - Blocking my progress"
+        - "Low"
+        - "Medium"
+        - "High"
+        - "Urgent"
+      default: 0
     validations:
       required: true

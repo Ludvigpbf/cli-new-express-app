@@ -2,19 +2,45 @@ name: "🐞 Bug Report"
 description: "Report a reproducible bug in the project."
 title: "[Bug]: "
 labels: ["bug"]
+assignees:
+  - ludvigpbf
 body:
+  - type: markdown
+    attributes:
+      value: "### Type: Bug"
+  - type: markdown
+    attributes:
+      value: "### Status: Backlog"
   - type: markdown
     attributes:
       value: "Thanks for reporting a bug! Please fill in the details below."
 
-  - type: input
+  - type: dropdown
     id: version
     attributes:
-      label: "CLI Version"
+      label: "Version"
       description: "Which version of the CLI are you using?"
-      placeholder: "e.g., 1.0.0"
+      options: 
+        - "V1"
+        - "V2"
+      default: 0
     validations:
       required: true
+  - type: dropdown
+    id: branch
+    attributes:
+      label: "Branch"
+      description: "Which branch is the bug on?"
+      options: 
+        - "main"
+        - "prompt"
+        - "help"
+        - "template"
+        - "fetaure"
+        - "config"
+      default: 0
+    validations:
+      required: false
 
   - type: textarea
     id: description
