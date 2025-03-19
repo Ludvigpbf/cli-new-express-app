@@ -7,20 +7,41 @@ assignees:
 body:
   - type: markdown
     attributes:
-      value: "### Type: Bug"
-  - type: markdown
-    attributes:
-      value: "### Status: Backlog"
-  - type: markdown
-    attributes:
       value: "Thanks for reporting a bug! Please fill in the details below."
-
+  - type: dropdown
+    id: type
+    attributes:
+      label: "Type"
+      description: "Issue type"
+      options:
+        - "Bug"
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: "Status"
+      description: "The current status of this issue."
+      options:
+        - "Backlog"
+        - "Up next"
+        - "In Progress"
+        - "Done"
+        - "QA"
+        - "PR"
+        - "On hold"
+        - "Archived"
+        - "Deployed"
+      default: 0
+    validations:
+      required: true
   - type: dropdown
     id: version
     attributes:
       label: "Version"
       description: "Which version of the CLI are you using?"
-      options: 
+      options:
         - "V1"
         - "V2"
       default: 0
@@ -31,17 +52,15 @@ body:
     attributes:
       label: "Branch"
       description: "Which branch is the bug on?"
-      options: 
+      options:
         - "main"
         - "prompt"
         - "help"
         - "template"
         - "fetaure"
-        - "config"
-      default: 1
+      default: 0
     validations:
       required: false
-
   - type: textarea
     id: description
     attributes:
@@ -49,7 +68,6 @@ body:
       description: "Describe the bug in detail."
     validations:
       required: true
-
   - type: textarea
     id: steps
     attributes:
