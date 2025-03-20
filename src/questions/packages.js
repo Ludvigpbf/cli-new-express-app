@@ -8,6 +8,7 @@ return await inquirer.prompt([
       message: "What packages do you want to install?",
       choices: [
         "morgan",
+        "sequelize",
         "jsonwebtoken",
         "bcrypt",
         "express-validator",
@@ -24,7 +25,6 @@ return await inquirer.prompt([
         "axios",
         "node-fetch",
         "winston",
-        "jest",
         "supertest",
         "none",
         new inquirer.Separator("--- End of list ---"),
