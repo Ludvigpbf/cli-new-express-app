@@ -2,11 +2,11 @@
 
 import { program } from "commander";
 import chalk from "chalk";
-import { createProject } from "../utils/files.js";
-import { setupGit, createGitHubRepo } from "../utils/gitConfig.js";
-import { askProjectDetails } from "../utils/prompts.js";
-import { banner } from "../utils/banner.js";
-import { handleArgs } from "../utils/help/argsHandler.js";
+import { createProject } from "../src/generator.js";
+import { setupGit, createGitHubRepo } from "../src/utils/gitConfig.js";
+import { askProjectDetails } from "../src/prompts.js";
+import { banner } from "../src/banner.js";
+import { handleArgs } from "../src/utils/help/argsHandler.js";
 
 const args = process.argv.slice(2);
 handleArgs(args);
@@ -31,21 +31,20 @@ const runCLI = async () => {
     databaseAnswer,
   } = answers;
 
-  console.log(answers);
   // Create project folders and install dependencies
   await createProject(
     projectName,
     selectedLanguage,
-    gitConfig,
     templateAnswer,
     readmeAnswer,
     testingAnswer,
     dockerAnswer,
-    packageAnswer,
     dockerConfig,
-    databaseAnswer
+    databaseAnswer,
+    packageAnswer
   );
 
+  console.log(chalk.blue("🔧 Starting Git configuration...\n"));
   // Handle Git-init and GitHub repo
   if (gitConfig.useGit === true) {
     await setupGit(projectName);
@@ -53,6 +52,7 @@ const runCLI = async () => {
   if (gitConfig.createGitHubRepo === true) {
     await createGitHubRepo(projectName);
   }
+  console.log(chalk.green("\n---------------------------\n"));
 
   console.log(chalk.green("\n Project is done! Run these commands:\n"));
   console.log(chalk.cyan(`cd ${projectName}`));

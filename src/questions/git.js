@@ -1,5 +1,5 @@
 import inquirer from "inquirer";
-import { isGitHubAuthenticated, loginToGitHub } from "../gitConfig.js";
+import { isGitHubAuthenticated, loginToGitHub } from "../utils/gitConfig.js";
 
 /**
  * 1. Asks the user if they want to initialize a Git-repo.

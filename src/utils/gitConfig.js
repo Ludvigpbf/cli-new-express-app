@@ -4,6 +4,9 @@ import simpleGit from "simple-git";
 import { execSync } from "child_process";
 import path from "path";
 
+export const GITHUB_REPO = "https://github.com/ludvigpbf/cli-new-express-app.git";
+export const TEMPLATES_DIR = "templates";
+
 /**
  * Checks if the user is logged in to GitHub CLI.
  * @returns {boolean} True if authenticated, otherwise false.
@@ -62,14 +65,14 @@ export const loginToGitHub = async () => {
  * @param {string} projectName - The name of the project directory.
  */
 export const setupGit = async (projectName) => {
-  console.log(chalk.blue("\n🔧 Initializing Git repository..."));
+  console.log(chalk.blue("🔧 Initializing Git repository..."));
   const git = simpleGit({ baseDir: path.join(process.cwd(), projectName) });
 
   try {
     await git.init();
     await git.add(".");
     await git.commit("Initial commit");
-    console.log(chalk.green("Git repository initialized!\n"));
+    console.log(chalk.green("\n✅Git repository initialized!\n"));
   } catch (error) {
     console.error(
       chalk.red("Failed to initialize Git repository:", error.message)

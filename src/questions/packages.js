@@ -7,7 +7,6 @@ return await inquirer.prompt([
       name: "packages",
       message: "What packages do you want to install?",
       choices: [
-        "cors",
         "morgan",
         "jsonwebtoken",
         "bcrypt",
