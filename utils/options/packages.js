@@ -5,7 +5,6 @@ import inquirer from "inquirer";
  * @type {Array<string | inquirer.Separator>} The list of packages
  */
 export const packagesOptions = [
-  "cors",
   "morgan",
   "jsonwebtoken",
   "bcrypt",
@@ -22,18 +21,7 @@ export const packagesOptions = [
   "nodemailer",
   "axios",
   "node-fetch",
-  "winston",
-  "jest",
   "supertest",
   "none",
   new inquirer.Separator("--- End of list ---"),
-];
-
-export const defaultPackages = ["express", "dotenv"];
-export const defaultDevPackages = [
-  "nodemon",
-  "typescript",
-  "ts-node",
-  "@types/node",
-  "@types/express",
 ];

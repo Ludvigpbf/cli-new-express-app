@@ -6,7 +6,7 @@ import {
   updateInfo,
   deleteInfo,
 } from "../services/infoService";
-import { logger } from "../utils/logger";
+import logger from "../utils/logger";
 
 export const getAll = (req: Request, res: Response) => {
   logger.info("Fetching all Flyckt Coding info");
@@ -25,7 +25,7 @@ export const getById = (req: Request, res: Response) => {
 
 export const create = (req: Request, res: Response) => {
   const newInfo = createInfo(req.body);
-  logger.info(`New info created: ${JSON.stringify(newInfo)}`);
+  logger.info("New info created", newInfo);
   res.status(201).json(newInfo);
 };
 
@@ -36,7 +36,7 @@ export const update = (req: Request, res: Response) => {
     logger.warn(`Update failed for id ${id}`);
     return res.status(404).json({ message: "Not found" });
   }
-  logger.info(`Updated info with id ${id}: ${JSON.stringify(updatedInfo)}`);
+  logger.info(`Updated info with id ${id}`, updatedInfo);
   res.json(updatedInfo);
 };
 
