@@ -1,6 +1,6 @@
 name: "🐞 Bug Report"
 description: "Report a reproducible bug in the project."
-title: "[Bug]: "
+title: "🐞[Bug]: "
 labels: ["bug"]
 assignees:
   - ludvigpbf
@@ -57,7 +57,7 @@ body:
         - "prompt"
         - "help"
         - "template"
-        - "fetaure"
+        - "feature"
       default: 0
     validations:
       required: false

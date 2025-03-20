@@ -1,6 +1,6 @@
-name: Question
+name: ❓ Question
 description: Ask a question about the project
-title: "[Question]: "
+title: "❓[Question]: "
 labels: ["question"]
 assignees:
   - ludvigpbf
