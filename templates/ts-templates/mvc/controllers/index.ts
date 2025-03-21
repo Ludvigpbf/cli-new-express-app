@@ -1,1 +1,0 @@
-export {infoController} from './infoController';

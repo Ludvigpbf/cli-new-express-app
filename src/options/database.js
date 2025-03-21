@@ -11,11 +11,11 @@ export const databaseOptions = [
   { name: "MySQL", value: "MySQL", packages: ["mysql2"] },
   { name: "MariaDB", value: "MariaDB", packages: ["mariadb"] },
   { name: "PostgreSQL", value: "PostgreSQL", packages: ["pg", "pg-hstore"] },
-  { name: "SQLite", value: "SQLite", packages: ["sqlite3"] },
-  {
+  /* { name: "SQLite", value: "SQLite", packages: ["sqlite3"] }, */
+ /*  {
     name: "GraphQL (Prisma)",
     value: "GraphQL (Prisma)",
     packages: ["@prisma/client", "prisma"],
-  },
+  }, */
   new inquirer.Separator(" --- End of list --- "),
 ];

@@ -1,3 +1,4 @@
+export const MySQLConfig = `
 import mysql from "mysql2/promise";
 
 export const setupMySQL = async () => {
@@ -11,3 +12,4 @@ export const setupMySQL = async () => {
   console.log("✅ MySQL connection ready");
   return pool;
 };
+`;

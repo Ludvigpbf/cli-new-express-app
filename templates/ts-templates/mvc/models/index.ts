@@ -1,0 +1,1 @@
+export { InfoModel } from "./infoModel";

@@ -1,51 +1,51 @@
 import { Request, Response } from "express";
-import {
-  getAllInfo,
-  getInfoById,
-  createInfo,
-  updateInfo,
-  deleteInfo,
-} from "../services/infoService";
-import logger from "../utils/logger";
+import { logger } from "../utils/logger";
+import { InfoModel } from "../models/infoModel";
+import { FcInfo } from "../interfaces/infoInterface";
 
-export const getAll = (req: Request, res: Response) => {
-  logger.info("Fetching all Flyckt Coding info");
-  res.json(getAllInfo());
+export const getInfo = (req: Request, res: Response): void => {
+    logger.info("Fetching all info");
+    const data = InfoModel.getInfo();
+    res.json(data);
 };
 
-export const getById = (req: Request, res: Response) => {
-  const id = parseInt(req.params.id);
-  const info = getInfoById(id);
-  if (!info) {
-    logger.warn(`Info with id ${id} not found`);
-    return res.status(404).json({ message: "Not found" });
-  }
-  res.json(info);
+export const getInfoById = (req: Request, res: Response): void => {
+    const id = parseInt(req.params.id, 10);
+    logger.info(`Fetching info with id: ${id}`);
+    const data = InfoModel.getInfoById(id);
+    if (data) {
+        res.json(data);
+    } else {
+        res.status(404).json({ message: "Info not found" });
+    }
 };
 
-export const create = (req: Request, res: Response) => {
-  const newInfo = createInfo(req.body);
-  logger.info("New info created", newInfo);
-  res.status(201).json(newInfo);
+export const createInfo = (req: Request, res: Response): void => {
+    const newInfo: FcInfo = req.body;
+    logger.info("Creating new info entry");
+    const createdInfo = InfoModel.createInfo(newInfo);
+    res.status(201).json(createdInfo);
 };
 
-export const update = (req: Request, res: Response) => {
-  const id = parseInt(req.params.id);
-  const updatedInfo = updateInfo(id, req.body);
-  if (!updatedInfo) {
-    logger.warn(`Update failed for id ${id}`);
-    return res.status(404).json({ message: "Not found" });
-  }
-  logger.info(`Updated info with id ${id}`, updatedInfo);
-  res.json(updatedInfo);
+export const updateInfo = (req: Request, res: Response): void => {
+    const id = parseInt(req.params.id, 10);
+    const updatedData: Partial<FcInfo> = req.body;
+    logger.info(`Updating info with id: ${id}`);
+    const updatedInfo = InfoModel.updateInfo(id, updatedData);
+    if (updatedInfo) {
+        res.json(updatedInfo);
+    } else {
+        res.status(404).json({ message: "Info not found" });
+    }
 };
 
-export const remove = (req: Request, res: Response) => {
-  const id = parseInt(req.params.id);
-  if (!deleteInfo(id)) {
-    logger.warn(`Delete failed for id ${id}`);
-    return res.status(404).json({ message: "Not found" });
-  }
-  logger.info(`Deleted info with id ${id}`);
-  res.status(204).send();
+export const deleteInfo = (req: Request, res: Response): void => {
+    const id = parseInt(req.params.id, 10);
+    logger.info(`Deleting info with id: ${id}`);
+    const success = InfoModel.deleteInfo(id);
+    if (success) {
+        res.json({ message: "Info deleted" });
+    } else {
+        res.status(404).json({ message: "Info not found" });
+    }
 };
