@@ -1,11 +1,11 @@
-const {
+import {
   getAllInfo,
   getInfoById,
   createInfo,
   updateInfo,
   deleteInfo,
-} = require("../services/infoService");
-const { logger } = require("../utils/logger");
+} from "../services/infoService";
+import { logger } from "../utils/logger";
 
 const getAll = (req, res) => {
   logger.info("Fetching all Flyckt Coding info");

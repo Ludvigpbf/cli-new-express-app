@@ -1,4 +1,4 @@
-const infoRoutes = require("./routes/infoRoutes");
+import infoRoutes from "./routes/infoRoutes";
 
 const mainRouter = express.Router();
 

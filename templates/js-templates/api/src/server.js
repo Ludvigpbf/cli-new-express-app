@@ -1,6 +1,6 @@
-const express = require("express");
-const mainRouter = require("./routes/mainRouter");
-const { logger } = require("./utils/logger");
+import express from "express";
+import mainRouter from "./routes/mainRouter";
+import { logger } from "./utils/logger";
 
 const app = express(); // Create Express app
 

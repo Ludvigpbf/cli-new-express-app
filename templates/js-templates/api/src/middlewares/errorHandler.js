@@ -1,4 +1,4 @@
-const { logger } = require("../utils/logger");
+import { logger } from "../utils/logger";
 
 class AppError extends Error {
   constructor(message, statusCode = 500) {

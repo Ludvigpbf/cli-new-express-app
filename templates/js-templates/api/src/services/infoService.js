@@ -1,4 +1,4 @@
-const { fcInfo } = require("../models/infoModel");
+import { fcInfo } from "../models/infoModel";
 
 const getAllInfo = () => fcInfo;
 

@@ -56,7 +56,7 @@ const runCLI = async () => {
 
   console.log(chalk.green("\n Project is done! Run these commands:\n"));
   console.log(chalk.cyan(`cd ${projectName}`));
-  console.log(chalk.cyan("npm start\n"));
+  console.log(chalk.cyan("npm run dev\n"));
 };
 
 program

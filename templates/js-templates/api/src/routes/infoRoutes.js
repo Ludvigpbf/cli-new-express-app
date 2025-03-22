@@ -1,5 +1,11 @@
-const express = require("express");
-const { getAll, getById, create, update, remove } = require("../controllers/infoController");
+import express from "express";
+import {
+  getAll,
+  getById,
+  create,
+  update,
+  remove,
+} from "../controllers/infoController";
 
 const infoRouter = express.Router();
 
