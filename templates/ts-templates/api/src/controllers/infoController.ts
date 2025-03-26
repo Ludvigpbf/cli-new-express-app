@@ -14,13 +14,13 @@ export const getAll = (req: Request, res: Response) => {
 };
 
 export const getById = (req: Request, res: Response) => {
-  const id = parseInt(req.params.id);
+  const id = Number(req.params.id);
   const info = getInfoById(id);
   if (!info) {
     logger.warn(`Info with id ${id} not found`);
     return res.status(404).json({ message: "Not found" });
   }
-  res.json(info);
+  return res.json(info);
 };
 
 export const create = (req: Request, res: Response) => {
@@ -30,22 +30,22 @@ export const create = (req: Request, res: Response) => {
 };
 
 export const update = (req: Request, res: Response) => {
-  const id = parseInt(req.params.id);
+  const id = Number(req.params.id);
   const updatedInfo = updateInfo(id, req.body);
   if (!updatedInfo) {
     logger.warn(`Update failed for id ${id}`);
     return res.status(404).json({ message: "Not found" });
   }
   logger.info(`Updated info with id ${id}: ${JSON.stringify(updatedInfo)}`);
-  res.json(updatedInfo);
+  return res.json(updatedInfo);
 };
 
 export const remove = (req: Request, res: Response) => {
-  const id = parseInt(req.params.id);
+  const id = Number(req.params.id);
   if (!deleteInfo(id)) {
     logger.warn(`Delete failed for id ${id}`);
     return res.status(404).json({ message: "Not found" });
   }
   logger.info(`Deleted info with id ${id}`);
-  res.status(204).send();
+  return res.status(204).send();
 };

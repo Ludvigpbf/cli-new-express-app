@@ -2,67 +2,76 @@ import inquirer from "inquirer";
 import {
   jestOptions,
   mochaOptions,
-  chaiOptions,
   jasmineOptions,
 } from "../options/testing/index.js";
 
 /**
  *
+ * @returns {Promise<object>} The answers from the user.
+ *
  */
 
 export const askTesting = async () => {
-  return await inquirer.prompt([
+  const useTesting = await inquirer.prompt([
     {
       type: "confirm",
       name: "testing",
       message: "Do you want to include testing in your project?",
       default: true,
     },
+  ]);
+
+  // Om användaren väljer bort testning, returnera direkt
+  if (!useTesting.testing) {
+    return { useTesting: false, testingTool: null, testingConfig: null };
+  }
+
+  const testingTool = await inquirer.prompt([
     {
       type: "list",
-      name: "testingOptions",
+      name: "testingTool",
       message: "Select testing libraries",
       choices: [
         "jest",
         "mocha",
-        "chai",
         "jasmine",
         "none",
         new inquirer.Separator("--- End of list ---"),
       ],
-      when: ({ testing }) => testing,
-    },
-    {
-      type: "checkbox",
-      name: "jestOptions",
-      message: "Select Jest options",
-      choices: ({ selectedLanguage }) => jestOptions({ selectedLanguage }),
-      when: ({ testingOptions }) =>
-        testingOptions && testingOptions.includes("jest"),
-    },
-    {
-      type: "checkbox",
-      name: "mochaOptions",
-      message: "Select Mocha options",
-      choices: ({ selectedLanguage }) => mochaOptions({ selectedLanguage }),
-      when: ({ testingOptions }) =>
-        testingOptions && testingOptions.includes("mocha"),
-    },
-    {
-      type: "checkbox",
-      name: "chaiOptions",
-      message: "Select Chai options",
-      choices: ({ selectedLanguage }) => chaiOptions({ selectedLanguage }),
-      when: ({ testingOptions }) =>
-        testingOptions && testingOptions.includes("chai"),
-    },
-    {
-      type: "checkbox",
-      name: "jasmineOptions",
-      message: "Select Jasmine options",
-      choices: ({ selectedLanguage }) => jasmineOptions({ selectedLanguage }),
-      when: ({ testingOptions }) =>
-        testingOptions && testingOptions.includes("jasmine"),
     },
   ]);
+
+  if (testingTool.testingTool === "none") {
+    return { useTesting: false, testingTool: null, testingConfig: null };
+  }
+
+  const testingConfig = await inquirer.prompt([
+    {
+      type: "checkbox",
+      name: "jestPacks",
+      message: "Select Jest packages",
+      choices: ({ selectedLanguage }) => jestOptions({ selectedLanguage }),
+      when: () => testingTool.testingTool === "jest",
+    },
+    {
+      type: "checkbox",
+      name: "mochaPacks",
+      message: "Select Mocha packages",
+      choices: ({ selectedLanguage }) => mochaOptions({ selectedLanguage }),
+      when: () => testingTool.testingTool === "mocha",
+    },
+    {
+      type: "checkbox",
+      name: "jasminePacks",
+      message: "Select Jasmine packages",
+      choices: ({ selectedLanguage }) => jasmineOptions({ selectedLanguage }),
+      when: () => testingTool.testingTool === "jasmine",
+    },
+  ]);
+
+  return {
+    useTesting: useTesting.testing,
+    testingTool: testingTool.testingTool,
+    testingConfig,
+  };
 };

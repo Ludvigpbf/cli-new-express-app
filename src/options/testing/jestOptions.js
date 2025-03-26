@@ -2,20 +2,21 @@ import inquirer from "inquirer";
 
 export const jestOptions = ({ selectedLanguage }) => {
   const options = [
-    "jest",
-    "jest-cli",
-    "jest-environment-jsdom",
-    "jest-environment-node",
-    "jest-extended",
-    "jest-watch-typeahead",
-    "jest-worker",
-    "none",
+    { name: "jest", value: "jest", checked: true },
+    { name: "supertest", value: "supertest", checked: true },
+    { name: "jest-cli", value: "jest-cli" },
+    { name: "jest-environment-jsdom", value: "jest-environment-jsdom" },
+    { name: "jest-environment-node", value: "jest-environment-node" },
+    { name: "jest-extended", value: "jest-extended" },
+    { name: "jest-watch-typeahead", value: "jest-watch-typeahead" },
+    { name: "jest-worker", value: "jest-worker" },
+    { name: "none", value: "none" },
     new inquirer.Separator("--- End of list ---"),
   ];
 
-  // Lägg till TypeScript-specifika Jest-paket om TypeScript används
+  // Add TypeScript options if selected language is TypeScript
   if (selectedLanguage === "typescript") {
-    options.splice(-2, 0, "ts-jest", "@types/jest");
+    options.splice(-2, 0, { name: "ts-jest", value: "ts-jest" }, { name: "@types/jest", value: "@types/jest" });
   }
 
   return options;

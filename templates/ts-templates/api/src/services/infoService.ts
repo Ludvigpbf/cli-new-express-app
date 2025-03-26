@@ -6,9 +6,11 @@ export const getAllInfo = (): FcInfo[] => fcInfo;
 export const getInfoById = (id: number): FcInfo | undefined =>
   fcInfo.find((info) => info.id === id);
 
-export const createInfo = (newInfo: FcInfo): FcInfo => {
-  fcInfo.push(newInfo);
-  return newInfo;
+export const createInfo = (newInfo: Omit<FcInfo, "id">): FcInfo => {
+  const newId = fcInfo.length > 0 ? Math.max(...fcInfo.map(i => i.id)) + 1 : 1;
+  const newEntry: FcInfo = { id: newId, ...newInfo };
+  fcInfo.push(newEntry);
+  return newEntry;
 };
 
 export const updateInfo = (id: number, updatedData: Partial<FcInfo>): FcInfo | null => {

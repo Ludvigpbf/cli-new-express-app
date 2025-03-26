@@ -4,6 +4,8 @@ import {logger} from "./utils/logger";
 
 const app = express(); // Create Express app
 
+app.use(express.json()); // Middleware for parsing request bodies
+
 const PORT = process.env.PORT || 3000; // Set default port or use environment port
 
 app.use(express.json()); // Middleware for parsing request bodies

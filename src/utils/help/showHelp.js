@@ -13,7 +13,7 @@ export const showHelp = () => {
   );
   console.log(
     chalk.green("  --name"),
-    chalk.white("   Specify the project name")
+    chalk.white("          Specify the project name")
   );
   console.log(
     chalk.green("  --docker"),

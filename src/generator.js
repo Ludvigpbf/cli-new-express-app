@@ -3,6 +3,7 @@ import fs from "fs-extra";
 import path from "path";
 import { execSync } from "child_process";
 import dbConfigs from "./generators/database/index.js";
+import testingConfigs from "./generators/testing/index.js";
 import { GITHUB_REPO, TEMPLATES_DIR } from "./utils/gitConfig.js";
 
 /**
@@ -29,11 +30,14 @@ export const createProject = async (
   templateAnswer,
   readmeAnswer,
   testingAnswer,
+  testingTool,
+  testingConfig,
   dockerAnswer,
   dockerConfig,
   databaseAnswer,
   packageAnswer
 ) => {
+  console.log(testingAnswer);
   // Create project folder
   console.log(chalk.green("\n---------------------------\n"));
 
@@ -68,6 +72,12 @@ export const createProject = async (
   // Remove the temporary clone directory
   await fs.remove(tempDir);
 
+  // Add projectName to package.json
+  const packageJsonPath = path.join(projectPath, "package.json");
+  const packageJson = fs.readJsonSync(packageJsonPath);
+  packageJson.name = projectName;
+  fs.writeJsonSync(packageJsonPath, packageJson, { spaces: 2 });
+
   console.log(chalk.green("\n✅ Folder setup completed!"));
 
   console.log(chalk.green("\n---------------------------\n"));
@@ -76,16 +86,16 @@ export const createProject = async (
     console.log(chalk.blue("📝 Creating README.md..."));
     const readmePath = path.join(projectPath, "README.md");
     const readmeContent = `# ${projectName}
-  
-  Welcome to ${projectName}!
-  
-  ## Description
+    
+    Welcome to ${projectName}!
+    
+    ## Description
     A new awesome project created with this generator.
-  
-  ## Installation
-  \`\`\`sh
-  npm install
-  \`\`\`
+    
+    ## Installation
+    \`\`\`sh
+    npm install
+    \`\`\`
   
   ## Usage
   \`\`\`sh
@@ -98,6 +108,7 @@ export const createProject = async (
 
     fs.writeFileSync(readmePath, readmeContent);
   }
+
   console.log(chalk.green("\n✅ README.md created!"));
 
   console.log(chalk.green("\n---------------------------\n"));
@@ -144,25 +155,29 @@ export const createProject = async (
   console.log(chalk.green("\n---------------------------\n"));
 
   // Create testing environment
-  if (testingAnswer) {
+  if (testingAnswer && testingTool) {
     console.log(chalk.blue("🧪 Setting up testing environment..."));
 
     const testingPath = path.join(projectPath, "tests");
-    fs.mkdirSync(testingPath);
+    fs.mkdirSync(testingPath, { recursive: true });
 
-    const testingConfigPath = path.join(testingPath, "jest.config.js");
-    const testingConfigContent = `module.exports = {
-      testEnvironment: "node",
-      transform: {
-        "^.+\\.tsx?$": "ts-jest",
-      },
-      testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
-      moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
-    };`;
+    // Dynamically create the test configuration file based on the selected testing framework
+    const testConfigFileName = `${testingTool.toLowerCase()}.config.js`;
+    const testingConfigPath = path.join(testingPath, testConfigFileName);
 
+    // Get the content of the selected testing framework configuration file
+    const testingConfigContent =
+      testingConfigs[testingTool] || `// No testing framework selected`;
+
+    // Populate the test configuration file with the content
     fs.writeFileSync(testingConfigPath, testingConfigContent.trim());
+
+    console.log(
+      chalk.green(`\n✅ Testing environment created: ${testConfigFileName}!`)
+    );
+  } else {
+    console.log(chalk.red("⚠️ No testing framework selected."));
   }
-  console.log(chalk.green("\n✅ Testing environment created!"));
 
   console.log(chalk.green("\n---------------------------\n"));
 
@@ -233,6 +248,18 @@ services:
     packageAnswer.push("mysql2");
   } else if (databaseAnswer === "SQLite") {
     packageAnswer.push("sqlite3");
+  }
+
+  if (testingConfig) {
+    Object.values(testingConfig).forEach((packages) => {
+      if (Array.isArray(packages)) {
+        packages.forEach((pkg) => {
+          if (pkg !== "none") {
+            packageAnswer.push(pkg);
+          }
+        });
+      }
+    });
   }
 
   // Install dependencies

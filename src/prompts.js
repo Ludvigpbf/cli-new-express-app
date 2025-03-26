@@ -39,8 +39,12 @@ export const askProjectDetails = async () => {
 
   // Ask if the user wants to include testing. Saves the answer in the testingAnswer variable
   const testingPrompt = await askTesting();
-  const testingAnswer = testingPrompt.testing;
-
+  const testingAnswer = testingPrompt.useTesting;
+  const testingTool = testingPrompt.testingTool || null;
+  const testingConfig = testingPrompt.testingConfig || null;
+  console.log(testingAnswer);
+  console.log(testingTool);
+  console.log(testingConfig);
   // Ask if the user wants to use Docker. Saves the answer in the dockerAnswer variable
   const dockerPrompt = await askDocker();
   const dockerAnswer = dockerPrompt.useDocker; // true or false
@@ -65,11 +69,15 @@ export const askProjectDetails = async () => {
     templateAnswer,
     readmeAnswer,
     testingAnswer,
+    testingTool,
+    testingConfig,
     dockerAnswer,
     dockerConfig,
     databaseAnswer,
     packageAnswer,
   };
+
+  console.log(answers);
 
   return answers;
 };
