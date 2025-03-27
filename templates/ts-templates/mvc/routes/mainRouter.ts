@@ -1,8 +1,8 @@
 import express from "express";
-import  infoRouter  from "../routes/infoRouter";
+import exampleRouter  from "@routes/exampleRouter";
 
 const mainRouter = express.Router();
 
-mainRouter.use("/info", infoRouter);
+mainRouter.use("/example", exampleRouter);
 
 export default mainRouter;
