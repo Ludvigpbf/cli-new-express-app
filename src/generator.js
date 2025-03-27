@@ -37,7 +37,6 @@ export const createProject = async (
   databaseAnswer,
   packageAnswer
 ) => {
-  console.log(testingAnswer);
   // Create project folder
   console.log(chalk.green("\n---------------------------\n"));
 
