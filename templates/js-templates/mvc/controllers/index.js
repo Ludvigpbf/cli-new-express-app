@@ -1,1 +1,1 @@
-export {exampleController} from './example-controller';
+export {exampleController} from './exampleController.js';

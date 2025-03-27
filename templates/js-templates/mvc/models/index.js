@@ -1,1 +1,1 @@
-export { WelcomeMessage } from "./exampleModel";
+export { WelcomeMessage } from "./exampleModel.js";
