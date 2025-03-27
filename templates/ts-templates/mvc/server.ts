@@ -1,5 +1,5 @@
 import express from 'express';
-import mainRouter from './routes/mainRouter';
+import mainRouter from '@routes/mainRouter';
 
 
 

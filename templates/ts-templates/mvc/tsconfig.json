@@ -21,13 +21,14 @@
     }
   },
   "include": [
-    "controllers",
-    "models",
-    "views",
-    "interfaces",
-    "middlewares",
-    "utils",
-    "routes"
+    "server.ts",
+    "controllers/**/*",
+    "models/**/*",
+    "views/**/*",
+    "interfaces/**/*",
+    "middlewares/**/*",
+    "utils/**/*",
+    "routes/**/*"
   ],
   "exclude": ["node_modules"]
 }
