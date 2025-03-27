@@ -1,18 +1,8 @@
 import express from "express";
-import {
-  getAll,
-  getById,
-  create,
-  update,
-  remove,
-} from "../controllers/infoController";
+import { exampleController } from "../controllers/index.js";
 
-const infoRouter = express.Router();
+const exampleRouter = express.Router();
 
-infoRouter.get("/", getAll);
-infoRouter.get("/:id", getById);
-infoRouter.post("/", create);
-infoRouter.put("/:id", update);
-infoRouter.delete("/:id", remove);
+exampleRouter.get("/welcome-message", exampleController.getMessage);
 
-module.exports = infoRouter;
+export default exampleRouter;

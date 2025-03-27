@@ -167,7 +167,7 @@ export const createProject = async (
 
     // Get the content of the selected testing framework configuration file
     const testingConfigContent =
-      testingConfigs[testingTool] || `// No testing framework selected`;
+      testingConfigs[testingTool] || `//  No testing framework selected`;
 
     // Populate the test configuration file with the content
     fs.writeFileSync(testingConfigPath, testingConfigContent.trim());

@@ -42,9 +42,7 @@ export const askProjectDetails = async () => {
   const testingAnswer = testingPrompt.useTesting;
   const testingTool = testingPrompt.testingTool || null;
   const testingConfig = testingPrompt.testingConfig || null;
-  console.log(testingAnswer);
-  console.log(testingTool);
-  console.log(testingConfig);
+
   // Ask if the user wants to use Docker. Saves the answer in the dockerAnswer variable
   const dockerPrompt = await askDocker();
   const dockerAnswer = dockerPrompt.useDocker; // true or false
@@ -76,8 +74,6 @@ export const askProjectDetails = async () => {
     databaseAnswer,
     packageAnswer,
   };
-
-  console.log(answers);
 
   return answers;
 };

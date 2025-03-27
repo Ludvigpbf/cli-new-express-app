@@ -1,11 +1,11 @@
-const fcInfo = {
-  id: 1,
-  name: "Flyckt Coding CLI",
-  description:
-    "A CLI tool for generating express templates quickly and easily.",
-  version: "1.0.0",
-  website: "https://flycktcoding.com",
-  author: "Ludvig Flyckt",
-};
-
-module.exports = { fcInfo };
+/**
+ * Example model
+ *
+ * @name WelcomeMessage
+ * @type {Object}
+ * @property {string} message - The message
+ */
+export const WelcomeMessage = {
+    message: "Welcome to new-express-app",
+    // Add more properties here
+  };

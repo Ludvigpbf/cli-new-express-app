@@ -1,8 +1,8 @@
-import infoRoutes from "./routes/exampleRouter";
+import express from "express";
+import exampleRouter from "./exampleRouter.js";
 
 const mainRouter = express.Router();
 
-mainRouter.use("/info", infoRoutes);
-// add more routes here
+mainRouter.use("/example", exampleRouter);
 
-module.exports = mainRouter;
+export default mainRouter;
