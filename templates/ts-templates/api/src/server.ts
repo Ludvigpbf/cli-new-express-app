@@ -1,6 +1,6 @@
 import express from "express";
-import mainRouter from "./routes/exampleRoutes";
-import {logger} from "./utils/logger";
+import mainRouter from "@routes/exampleRoutes";
+import {logger} from "@utils/logger";
 
 const app = express(); // Create Express app
 

@@ -1,5 +1,5 @@
 import express from "express";
-import { getAll } from "../controllers/exampleController";
+import { getAll } from "@controllers/exampleController";
 
 const exampleRouter = express.Router();
 

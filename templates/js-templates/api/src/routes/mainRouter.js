@@ -1,4 +1,4 @@
-import infoRoutes from "./routes/infoRoutes";
+import infoRoutes from "./routes/exampleRouter";
 
 const mainRouter = express.Router();
 

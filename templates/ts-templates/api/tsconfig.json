@@ -7,7 +7,19 @@
       "esModuleInterop": true,
       "forceConsistentCasingInFileNames": true,
       "skipLibCheck": true,
-      "allowJs": true
+      "allowJs": true,
+      "baseUrl": "./src/",
+      "paths": {
+        "@controllers/*": ["controllers/*"],
+        "@models/*": ["models/*"],
+        "@configs/*": ["configs/*"],
+        "@interfaces/*": ["interfaces/*"],
+        "@middlewares/*": ["middlewares/*"],
+        "@utils/*": ["utils/*"],
+        "@routes/*": ["routes/*"],
+        "@services/*": ["services/*"]
+      }
+
     },
     "include": ["src"],
     "exclude": ["node_modules", "dist"]
