@@ -1,7 +1,7 @@
 import express from "express";
-import mainRouter from "./routes/mainRouter";
-import { errorHandler } from "./middlewares/errorHandler";
-import { logger } from "./utils/logger";
+import mainRouter from "./routes/mainRouter.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
+import { logger } from "./utils/logger.js";
 
 const app = express(); // Create Express app
 
