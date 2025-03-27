@@ -48,9 +48,10 @@ const runCLI = async () => {
     packageAnswer
   );
 
-  console.log(chalk.blue("🔧 Starting Git configuration...\n"));
   // Handle Git-init and GitHub repo
   if (gitConfig.useGit === true) {
+    console.log(chalk.blue("🔧 Starting Git configuration...\n"));
+
     await setupGit(projectName);
   }
   if (gitConfig.createGitHubRepo === true) {

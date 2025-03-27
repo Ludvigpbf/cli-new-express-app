@@ -106,9 +106,11 @@ export const createProject = async (
   `;
 
     fs.writeFileSync(readmePath, readmeContent);
+
+    console.log(chalk.green("\n✅ README.md created!"));
+
   }
 
-  console.log(chalk.green("\n✅ README.md created!"));
 
   console.log(chalk.green("\n---------------------------\n"));
 
@@ -180,10 +182,10 @@ export const createProject = async (
 
   console.log(chalk.green("\n---------------------------\n"));
 
-  console.log(chalk.blue("🐳 Setting up Docker environment\n"));
-
+  
   // Create .dockerignore
   if (dockerAnswer) {
+    console.log(chalk.blue("🐳 Setting up Docker environment\n"));
     console.log(chalk.blue("🐳 Creating .dockerignore..."));
     const dockerIgnorePath = path.join(projectPath, ".dockerignore");
     const dockerIgnoreContent = `node_modules \nnpm-debug.log`;
@@ -233,8 +235,10 @@ services:
     environment:
       - NODE_ENV=development`;
     fs.writeFileSync(dockerComposePath, dockerComposeContent.trim());
+    
+    console.log(chalk.green("\n✅ Docker setup completed!"));
+
   }
-  console.log(chalk.green("\n✅ Docker setup completed!"));
 
   console.log(chalk.green("\n---------------------------\n"));
 
