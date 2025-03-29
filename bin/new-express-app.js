@@ -7,13 +7,15 @@ import { setupGit, createGitHubRepo } from "../src/utils/gitConfig.js";
 import { askProjectDetails } from "../src/prompts.js";
 import { banner } from "../src/banner.js";
 import { handleArgs } from "../src/utils/help/argsHandler.js";
+import { logAppStart, logAppEnd } from "../src/utils/logger.js";
 
 const args = process.argv.slice(2);
 handleArgs(args);
+const startTime = logAppStart(); // Log the start time
 
 console.log(banner);
-
 const runCLI = async () => {
+  try {
   console.log(chalk.green("\n                Welcome to Express App CLI!\n"));
 
   // Questions for user
@@ -58,6 +60,13 @@ const runCLI = async () => {
     await createGitHubRepo(projectName);
   }
   console.log(chalk.green("\n---------------------------\n"));
+
+  logAppEnd(startTime, answers, true); // Log the end time with success
+} catch (error) {
+  console.error(chalk.red("❌ An error occurred:"), error); // Log the error message
+  logAppEnd(startTime, {}, false); // Log the end time with failure
+  process.exit(1);
+}
 
   console.log(chalk.green("\n Project is done! Run these commands:\n"));
   console.log(chalk.cyan(`cd ${projectName}`));
