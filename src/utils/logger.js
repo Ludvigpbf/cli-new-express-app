@@ -1,6 +1,9 @@
 import fs from "fs";
 import path from "path";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const logFilePath = path.join(__dirname, "../activity-log.json");
 const packageJsonPath = path.join(__dirname, "../package.json");
 const { version } = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
