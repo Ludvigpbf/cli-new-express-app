@@ -2,7 +2,6 @@
   "name": "new-express-app",
   "version": "1.0.0",
   "description": "CLI to create a new express application",
-  "main": "index.js",
   "bin": {
     "new-express-app": "bin/new-express-app.js"
   },
@@ -10,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": ["express", "cli","cli-tool", "application", "generator", "template", "new-app"],
   "author": "",
   "license": "ISC",
   "dependencies": {
