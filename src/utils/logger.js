@@ -5,8 +5,17 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const logFilePath = path.join(__dirname, "../activity-log.json");
-const packageJsonPath = path.join(__dirname, "../package.json");
+const getLogFilePath = () => {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  
+  const logFileName = `log-${year}-${month}-${day}.json`; // Example: log-2025-03-29.json
+  return path.join(__dirname, "../logs", logFileName);
+};
+
+const packageJsonPath = path.join(__dirname, "../../package.json");
 const { version } = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
 
 /**
@@ -19,11 +28,28 @@ const getNextLogId = (logs) => {
   return logs[logs.length - 1].id + 1;
 };
 
+/** 
+ * Function to generate a unique session ID for app start/stop pairing.
+ * @returns {string} - A unique session ID.
+ */
+const generateSessionId = () => {
+  return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+}
+
+export let newSessionId = ""; // Initialize session ID
+export let startTime = null; // Initialize start time
+
 /**
  * Logs when the application starts.
+ * @returns {Date} - The start time of the application.
+ * @description
+ * This function logs the start time of the application to a JSON file.
+ * 
  */
 export const logAppStart = () => {
-  const startTime = new Date();
+  startTime = new Date();
+  newSessionId = generateSessionId();
+  const logFilePath = getLogFilePath();
 
   fs.readFile(logFilePath, "utf8", (err, data) => {
     let logs = [];
@@ -39,6 +65,7 @@ export const logAppStart = () => {
 
     const appStart = {
       id: nextId,
+      sessionId: newSessionId,
       action: "App started",
       timestamp: startTime.toISOString(),
       version: version,
@@ -50,11 +77,10 @@ export const logAppStart = () => {
 
     fs.writeFile(logFilePath, JSON.stringify(logs, null, 2), (writeErr) => {
       if (writeErr) console.error("Error writing to log file:", writeErr);
-      else console.log("App start logged.");
     });
   });
 
-  return startTime; // Returns the start time for further use
+  return {startTime, newSessionId}; // Returns the start time for further use
 };
 
 /**
@@ -63,9 +89,10 @@ export const logAppStart = () => {
  * @param {boolean} completedSuccessfully - Whether the app finished successfully.
  * @param {number} executionTimeMs - Execution time in milliseconds.
  */
-export const logAppEnd = (startTime, options = [], completedSuccessfully = true) => {
+export const logAppEnd = ( newSessionId, options = [], completedSuccessfully = true, startTime) => {
   const endTime = new Date();
   const executionTimeMs = endTime - startTime; // Calculating execution time in milliseconds
+  const logFilePath = getLogFilePath();
 
   fs.readFile(logFilePath, "utf8", (err, data) => {
     let logs = [];
@@ -81,6 +108,7 @@ export const logAppEnd = (startTime, options = [], completedSuccessfully = true)
 
     const appEnd = {
       id: nextId,
+      sessionId: newSessionId,
       action: "App finished",
       timestamp: endTime.toISOString(),
       environment: process.env.NODE_ENV || "development",
@@ -94,7 +122,6 @@ export const logAppEnd = (startTime, options = [], completedSuccessfully = true)
 
     fs.writeFile(logFilePath, JSON.stringify(logs, null, 2), (writeErr) => {
       if (writeErr) console.error("Error writing to log file:", writeErr);
-      else console.log("App end logged.");
     });
   });
 };
