@@ -2,6 +2,13 @@
   "name": "@flyckt-coding/new-express-app",
   "version": "1.0.2",
   "description": "CLI to create a new express application",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ludvigpbf/cli-new-express-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ludvigpbf/cli-new-express-app/issues"
+  },
   "bin": {
     "new-express-app": "bin/new-express-app.js"
   },
@@ -19,7 +26,7 @@
     "new-app"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "chalk": "^5.4.1",
     "commander": "^13.1.0",
