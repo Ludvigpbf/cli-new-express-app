@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "sessionId": "1743406891151-a2finvwzm",
+    "action": "App started",
+    "timestamp": "2025-03-31T07:41:31.151Z",
+    "version": "1.0.2",
+    "environment": "development",
+    "message": "App started at Mon Mar 31 2025 09:41:31 GMT+0200 (centraleuropeisk sommartid)"
+  },
+  {
+    "id": 2,
+    "sessionId": "1743406891151-a2finvwzm",
+    "action": "App finished",
+    "timestamp": "2025-03-31T07:42:35.012Z",
+    "environment": "development",
+    "options": {
+      "projectName": "test-app-cli-express",
+      "gitConfig": {
+        "useGit": true,
+        "createGitHubRepo": false
+      },
+      "selectedLanguage": "TypeScript",
+      "templateAnswer": "MVC",
+      "readmeAnswer": true,
+      "testingAnswer": true,
+      "testingTool": "mocha",
+      "testingConfig": {
+        "mochaPacks": [
+          "mocha",
+          "chai"
+        ]
+      },
+      "dockerAnswer": true,
+      "dockerConfig": {
+        "dockerBaseImage": "node:lts",
+        "dockerPorts": "3000:8080",
+        "useDockerCompose": true
+      },
+      "databaseAnswer": "MySQL",
+      "packageAnswer": [
+        "morgan",
+        "mysql2",
+        "mocha",
+        "chai"
+      ]
+    },
+    "completedSuccessfully": true,
+    "executionTimeMs": 63861,
+    "message": "App finished at Mon Mar 31 2025 09:42:35 GMT+0200 (centraleuropeisk sommartid). Execution time: 63861ms."
+  }
+]
