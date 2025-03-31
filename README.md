@@ -1,5 +1,5 @@
 <div align="center">
-<img src="public/express-app-ASCII.png" alt="Banner" width="500">
+<img src="https://github.com/Ludvigpbf/cli-new-express-app/blob/main/public/express-app-ASCII.png?raw=true" alt="Banner" width="500">
 </div>
 
 <div align="center">
@@ -8,8 +8,8 @@
 
 <div align="center">
  <img src="https://img.shields.io/badge/license-MIT-blue">
-  <img src="https://img.shields.io/npm/v/cli-new-express-app?label=npm@latest">
-  <img src="https://img.shields.io/npm/dm/cli-new-express-app?label=npm downloads">
+  <img src="https://img.shields.io/npm/v/@flyckt-coding/new-express-app?label=npm@latest">
+  <img src="https://img.shields.io/npm/dm/@flyckt-coding/new-express-app?label=npm downloads">
   <img src="https://img.shields.io/github/contributors/Ludvigpbf/cli-new-express-app?color=green">
   <img src="https://img.shields.io/github/stars/Ludvigpbf/cli-new-express-app?style=social">
 </div>
