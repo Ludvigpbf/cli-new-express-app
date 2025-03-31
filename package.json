@@ -1,5 +1,5 @@
 {
-  "name": "new-express-app",
+  "name": "@flyckt-coding/new-express-app",
   "version": "1.0.0",
   "description": "CLI to create a new express application",
   "bin": {
