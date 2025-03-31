@@ -1,4 +1,18 @@
-# CLI New Express App
+<div align="center">
+<img src="public/express-app-ASCII.png" alt="Banner" width="500">
+</div>
+
+<div align="center">
+<h1> CLI New Express App</h1>
+</div>
+
+<div align="center">
+ <img src="https://img.shields.io/badge/license-MIT-blue">
+  <img src="https://img.shields.io/npm/v/cli-new-express-app?label=npm@latest">
+  <img src="https://img.shields.io/npm/dm/cli-new-express-app?label=npm downloads">
+  <img src="https://img.shields.io/github/contributors/Ludvigpbf/cli-new-express-app?color=green">
+  <img src="https://img.shields.io/github/stars/Ludvigpbf/cli-new-express-app?style=social">
+</div>
 
 ## Overview
 
