@@ -8,8 +8,8 @@
 
 <div align="center">
  <img src="https://img.shields.io/badge/license-MIT-blue">
-  <img src="https://img.shields.io/npm/v/@flyckt-coding/new-express-app?label=npm@latest">
-  <img src="https://img.shields.io/npm/dm/@flyckt-coding/new-express-app?label=npm downloads">
+  <img src="https://img.shields.io/npm/v/new-express-project?label=npm@latest">
+  <img src="https://img.shields.io/npm/dm/new-express-project?label=npm downloads">
   <img src="https://img.shields.io/github/contributors/Ludvigpbf/cli-new-express-app?color=green">
   <img src="https://img.shields.io/github/stars/Ludvigpbf/cli-new-express-app?style=social">
 </div>
