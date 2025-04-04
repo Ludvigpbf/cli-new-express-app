@@ -36,11 +36,15 @@ This CLI tool is designed to streamline project setup by automating the configur
 
 To install the CLI tool globally, run:
 
-`npm install -g new-express-app`
+`npm install -g new-express-project`
+
+Once installed, you can run it globally with:
+
+`new-express-project`
 
 Or use it directly with npx:
 
-`npx new-express-app`
+`npx new-express-project`
 
 Follow the prompts to configure your project.
 
