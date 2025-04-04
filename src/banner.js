@@ -7,8 +7,10 @@ export const banner = `
           /_/                                 /_/   /_/      
      
                    By Ludvig Flyckt 2025
+                       Flyckt Coding    
+                       
          To see more information about the CLI type: 
-         new-express-app --help
+         new-express-project --help
          
          To contribute to the project, visit:
          https://github.com/Ludvigpbf/cli-new-express-app.git

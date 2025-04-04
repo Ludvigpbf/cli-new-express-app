@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "sessionId": "1743673983186-kqbyrhoed",
+    "action": "App started",
+    "timestamp": "2025-04-03T09:53:03.186Z",
+    "version": "1.0.2",
+    "environment": "development",
+    "message": "App started at Thu Apr 03 2025 11:53:03 GMT+0200 (centraleuropeisk sommartid)"
+  }
+]

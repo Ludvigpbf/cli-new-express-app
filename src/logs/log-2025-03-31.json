@@ -48,5 +48,14 @@
     "completedSuccessfully": true,
     "executionTimeMs": 63861,
     "message": "App finished at Mon Mar 31 2025 09:42:35 GMT+0200 (centraleuropeisk sommartid). Execution time: 63861ms."
+  },
+  {
+    "id": 3,
+    "sessionId": "1743437140829-k1auvnux4",
+    "action": "App started",
+    "timestamp": "2025-03-31T16:05:40.829Z",
+    "version": "1.0.2",
+    "environment": "development",
+    "message": "App started at Mon Mar 31 2025 18:05:40 GMT+0200 (centraleuropeisk sommartid)"
   }
 ]

@@ -1,5 +1,5 @@
 {
-  "name": "@flyckt-coding/new-express-app",
+  "name": "new-express-project",
   "version": "1.0.2",
   "description": "CLI to create a new express application",
   "repository": {
@@ -10,7 +10,7 @@
     "url": "https://github.com/Ludvigpbf/cli-new-express-app/issues"
   },
   "bin": {
-    "new-express-app": "bin/new-express-app.js"
+    "new-express-project": "bin/new-express-app.js"
   },
   "type": "module",
   "scripts": {
@@ -23,7 +23,10 @@
     "application",
     "generator",
     "template",
-    "new-app"
+    "project",
+    "new-app",
+    "new-project",
+    "new-express-app"
   ],
   "author": "",
   "license": "MIT",
@@ -31,7 +34,11 @@
     "chalk": "^5.4.1",
     "commander": "^13.1.0",
     "degit": "^2.8.4",
+    "fs-extra": "^11.3.0",
     "inquirer": "^12.4.3",
     "simple-git": "^3.27.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
