@@ -1,6 +1,6 @@
 {
   "name": "new-express-project",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "CLI to create a new express application",
   "repository": {
     "type": "git",
